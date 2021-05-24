@@ -6,12 +6,8 @@ import Rodape from '../components/Rodape';
 import BarraGloboCom from './../components/BarraGloboCom';
 import useDados from './../hooks/useDados';
 
-const Home = () => {
-  const enderecoApi = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}/api`
-    : 'http://localhost:3000/api';
+const Home = ({ enderecoApi }) => {
   const { carregando, erro, dados } = useDados(enderecoApi);
-  console.log(process.env.VERCEL_URL);
 
   if (carregando) {
     return (
@@ -58,6 +54,18 @@ const Home = () => {
       <Rodape />
     </div>
   );
+};
+
+export const getStaticProps = () => {
+  const enderecoApi = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}/api`
+    : 'http://localhost:3000/api';
+
+  return {
+    props: {
+      enderecoApi,
+    },
+  };
 };
 
 export default Home;

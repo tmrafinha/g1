@@ -11,6 +11,7 @@ const Home = () => {
     ? `https://${process.env.VERCEL_URL}/api`
     : 'http://localhost:3000/api';
   const { carregando, erro, dados } = useDados(enderecoApi);
+  console.log(process.env.VERCEL_URL);
 
   if (carregando) {
     return (
@@ -23,7 +24,7 @@ const Home = () => {
   if (erro) {
     return (
       <div>
-        <p>Ocorreu um erro ao carregar. Tente em instantes</p>
+        <p>Ocorreu um erro ao carregar. Tente em instantes.</p>
       </div>
     );
   }

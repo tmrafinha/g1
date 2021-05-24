@@ -19,12 +19,12 @@ const BarraGloboCom = () => {
           <LinkBarraGloboCom
             texto="ge"
             link="https://globoesporte.globo.com/"
-            cor="#06aa48"
+            cor="green"
           />
           <LinkBarraGloboCom
             texto="gshow"
             link="https://gshow.globo.com/"
-            cor="#ff7f00"
+            cor="#a85501"
           />
           <LinkBarraGloboCom
             texto="videos"

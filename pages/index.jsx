@@ -7,7 +7,10 @@ import BarraGloboCom from './../components/BarraGloboCom';
 import useDados from './../hooks/useDados';
 
 const Home = () => {
-  const { carregando, erro, dados } = useDados('http://localhost:3000/api');
+  const enderecoApi = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}/api`
+    : 'http://localhost:3000/api';
+  const { carregando, erro, dados } = useDados(enderecoApi);
 
   if (carregando) {
     return (

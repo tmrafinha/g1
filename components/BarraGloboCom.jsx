@@ -3,9 +3,9 @@ import LinkBarraGloboCom from './LinkBarraGloboCom';
 
 const BarraGloboCom = () => {
   return (
-    <div className="p-2">
+    <div className="p-2 bg-bg">
       <div className="flex items-center justify-between">
-        <div className="flex space-x-2">
+        <div className="flex space-x-4">
           <LinkBarraGloboCom
             texto="globo.com"
             link="https://www.globo.com"

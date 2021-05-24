@@ -30,10 +30,12 @@ const Home = () => {
 
   return (
     <div>
-      <BarraGloboCom />
-      <BarraTitulo />
+      <header className="sticky top-0">
+        <BarraGloboCom />
+        <BarraTitulo />
+      </header>
 
-      <div className="flex flex-col lg:flex-row lg:space-x-4 lg:px-4">
+      <main className="flex flex-col lg:flex-row lg:space-x-4 lg:px-4">
         <div className="w-full">
           {noticias &&
             noticias.map((noticia) => (
@@ -51,8 +53,11 @@ const Home = () => {
               />
             ))}
         </div>
-      </div>
-      <Rodape />
+      </main>
+
+      <footer>
+        <Rodape />
+      </footer>
     </div>
   );
 };

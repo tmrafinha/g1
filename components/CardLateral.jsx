@@ -1,7 +1,11 @@
 import React from 'react';
 import ItemCardLateral from './ItemCardLateral';
 
-const CardLateral = ({ cabecalho = 'ahsjkdhasjkhdkjas asd sad', rodape }) => {
+const CardLateral = ({
+  cabecalho = 'ahsjkdhasjkhdkjas asd sad',
+  itens = [],
+  rodape,
+}) => {
   return (
     <div className="bg-white border mt-4">
       <div className="flex flex-col divide-y">
@@ -10,9 +14,13 @@ const CardLateral = ({ cabecalho = 'ahsjkdhasjkhdkjas asd sad', rodape }) => {
         </div>
 
         <div className="px-4 divide-y">
-          <ItemCardLateral />
-          <ItemCardLateral />
-          <ItemCardLateral />
+          {itens.map((item) => (
+            <ItemCardLateral
+              key={item.texto}
+              texto={item.texto}
+              link={item.link}
+            />
+          ))}
         </div>
         {rodape && (
           <div className="">

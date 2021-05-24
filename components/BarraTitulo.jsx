@@ -5,12 +5,12 @@ import { SearchIcon } from '@heroicons/react/outline';
 const BarraTitulo = () => {
   return (
     <div className="bg-primary">
-      <div className="flex items-center justify-between p-2">
+      <div className="flex items-center justify-between p-2 md:py-3">
         <div className="flex">
           <MenuIcon className="h-7 text-white" />
         </div>
         <div className="flex">
-          <a href="#" className="text-white text-4xl font-bold">
+          <a href="#" className="text-white text-4xl md:text-5xl font-bold">
             G1
           </a>
         </div>

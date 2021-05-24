@@ -7,7 +7,7 @@ import BarraGloboCom from './../components/BarraGloboCom';
 import useDados from './../hooks/useDados';
 
 const Home = () => {
-  const enderecoApi = `${location.origin}/api`;
+  const enderecoApi = '/api';
   const { carregando, erro, dados } = useDados(enderecoApi);
 
   if (carregando) {

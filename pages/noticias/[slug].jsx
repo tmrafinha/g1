@@ -20,16 +20,16 @@ const PaginaNoticia = ({ noticia }) => {
   const corpo = documentToHtmlString(noticia[0].fields.corpo);
 
   const { menus } = dados;
-  if (noticia) {
-    return (
-      <div>
-        <NextSeo title={titulo} />
-        <header className="sticky top-0 z-50">
-          <BarraGloboCom />
-          <BarraTitulo titulo={categoria} />
-        </header>
+  return (
+    <div className="flex flex-col min-h-screen">
+      <NextSeo title={titulo} />
+      <header className="sticky top-0 z-50">
+        <BarraGloboCom />
+        <BarraTitulo titulo={categoria} />
+      </header>
 
-        <main className="flex flex-col lg:flex-row lg:space-x-4 lg:px-4">
+      <main className="flex-grow">
+        <div className="flex flex-col lg:flex-row lg:space-x-4 lg:px-4">
           <div className="w-full">
             {noticia && (
               <>
@@ -57,14 +57,14 @@ const PaginaNoticia = ({ noticia }) => {
                 />
               ))}
           </div>
-        </main>
+        </div>
+      </main>
 
-        <footer>
-          <Rodape />
-        </footer>
-      </div>
-    );
-  }
+      <footer>
+        <Rodape />
+      </footer>
+    </div>
+  );
 };
 
 export default PaginaNoticia;

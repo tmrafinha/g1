@@ -9,7 +9,7 @@ const ChamadaNoticia = ({ noticia }) => {
   return (
     <Link href={slug ? `/noticias/${slug}` : '#'} passHref>
       <a>
-        <div className="shadow-sm py-6 sm:p-6 group transform transition-all hover:bg-white hover:border  hover:shadow-md">
+        <div className="shadow-sm sm:shadow-none border-b py-6 sm:p-6 group transform transition-all hover:bg-white hover:border hover:shadow-md">
           <div className="flex flex-col sm:flex-row-reverse sm:justify-end space-y-2 sm:space-y-0">
             <div className="overflow-ellipsis overflow-hidden">
               <span className="font-bold px-6">{subtitulo}</span>

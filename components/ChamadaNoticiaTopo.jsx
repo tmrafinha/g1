@@ -9,16 +9,14 @@ const ChamadaNoticia = ({ noticia }) => {
   return (
     <Link href={slug ? `/noticias/${slug}` : '#'} passHref>
       <a>
-        <div className="shadow-sm py-6 sm:p-6 group transform transition-all hover:bg-white hover:border  hover:shadow-md">
-          <div className="flex flex-col sm:flex-row-reverse sm:justify-end space-y-2 sm:space-y-0">
-            <div className="overflow-ellipsis overflow-hidden">
+        <div className="bg-white border shadow-sm mt-4 py-6 group transform transition-all hover:shadow-md">
+          <div className="flex flex-col sm:flex-row-reverse space-y-2">
+            <div className="">
               <span className="font-bold px-6">{subtitulo}</span>
-              <p className="text-primary group-hover:text-primaryHover text-2xl sm:text-4xl font-bold px-6 overflow-ellipsis overflow-hidden">
+              <p className="text-primary group-hover:text-primaryHover text-2xl sm:text-4xl font-bold px-6 ">
                 {titulo}
               </p>
-              <p className="text-gray-600 px-6 overflow-ellipsis overflow-hidden">
-                {chamada}
-              </p>
+              <p className="text-gray-600 px-6 sm:pb-28">{chamada}</p>
             </div>
 
             {imagem && (
@@ -29,7 +27,7 @@ const ChamadaNoticia = ({ noticia }) => {
               />
             )}
 
-            <div className="flex space-x-2 text-gray-600 px-6 text-xs sm:hidden">
+            <div className="flex space-x-2 text-gray-600 px-6 text-xs sm:invisible">
               <span>{data}</span>
               <span>-</span>
               <span>Em {categoria}</span>

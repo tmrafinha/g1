@@ -28,9 +28,9 @@ const PaginaNoticia = ({ noticia }) => {
         <BarraTitulo titulo={categoria} />
       </header>
 
-      <main className="flex-grow">
-        <div className="flex flex-col lg:flex-row lg:space-x-4 lg:px-4">
-          <div className="w-full">
+      <main className="flex-grow justify-center">
+        <div className="flex flex-col lg:flex-row lg:justify-center lg:space-x-4 lg:px-4">
+          <div className="w-full lg:w-9/12">
             {noticia && (
               <>
                 <div className="p-4">

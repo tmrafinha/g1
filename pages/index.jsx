@@ -1,36 +1,18 @@
-import React from 'react';
 import BarraTitulo from '../components/BarraTitulo';
 import CardLateral from '../components/CardLateral';
 import ChamadaNoticia from '../components/ChamadaNoticia';
 import Rodape from '../components/Rodape';
 import BarraGloboCom from './../components/BarraGloboCom';
-import useDados from './../hooks/useDados';
+import dados from '../dados.json';
+import { fetchEntries } from './../util/contentfulPosts';
 
-const Home = () => {
-  const enderecoApi = '/api';
-  const { carregando, erro, dados } = useDados(enderecoApi);
-
-  if (carregando) {
-    return (
-      <div>
-        <p>Carregando...</p>
-      </div>
-    );
-  }
-
-  if (erro) {
-    return (
-      <div>
-        <p>Ocorreu um erro ao carregar. Tente em instantes.</p>
-      </div>
-    );
-  }
-
-  const { noticias, menus } = dados;
+const Home = ({ noticias }) => {
+  console.log(noticias);
+  const { menus } = dados;
 
   return (
     <div>
-      <header className="sticky top-0">
+      <header className="sticky top-0 z-50">
         <BarraGloboCom />
         <BarraTitulo />
       </header>
@@ -39,7 +21,7 @@ const Home = () => {
         <div className="w-full">
           {noticias &&
             noticias.map((noticia) => (
-              <ChamadaNoticia key={noticia.titulo} noticia={noticia} />
+              <ChamadaNoticia key={noticia.fields.titulo} noticia={noticia} />
             ))}
         </div>
 
@@ -63,3 +45,13 @@ const Home = () => {
 };
 
 export default Home;
+
+export const getStaticProps = async () => {
+  const noticias = await fetchEntries();
+
+  return {
+    props: {
+      noticias,
+    },
+  };
+};

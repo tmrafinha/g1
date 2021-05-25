@@ -15,13 +15,6 @@ const PaginaNoticia = ({ noticia }) => {
     return <div>Carregando...</div>;
   }
 
-  // const { carregando, erro, noticia } = useNoticia(slug);
-
-  // if (carregando) return <div>Carregando...</div>;
-
-  // if (erro) return <div>Ocurreu um erro. Tente novamente em instantes.</div>;
-
-  console.log(noticia);
   const { titulo, subtitulo, data, categoria } = noticia[0].fields;
   const imagem = noticia[0].fields.imagem?.fields.file.url;
   const corpo = documentToHtmlString(noticia[0].fields.corpo);

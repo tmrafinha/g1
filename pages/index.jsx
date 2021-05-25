@@ -7,7 +7,6 @@ import dados from '../dados.json';
 import { fetchEntries } from './../util/contentfulPosts';
 
 const Home = ({ noticias }) => {
-  console.log(noticias);
   const { menus } = dados;
 
   return (

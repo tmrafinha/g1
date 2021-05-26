@@ -10,10 +10,6 @@ const ChamadaNoticia = ({
   imagem,
   slug,
 }) => {
-  // const { titulo, subtitulo, chamada, data, categoria, imagem, slug } =
-  //   noticia.fields;
-  // const imagem = noticia.fields.imagem.file.url;
-
   return (
     <Link href={slug ? `/noticias/${slug}` : '#'} passHref>
       <a>

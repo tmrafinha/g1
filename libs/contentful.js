@@ -9,7 +9,10 @@ const client = createClient({
 });
 
 export const fetchEntries = async (filter) => {
-  const entries = await client.getEntries(filter);
+  const entries = await client.getEntries({
+    order: '-sys.createdAt',
+    ...filter,
+  });
 
   if (entries.items) return entries.items;
   console.error('Error getting entries.');

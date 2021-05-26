@@ -10,7 +10,7 @@ const client = createClient({
 
 export const fetchEntries = async (filter) => {
   const entries = await client.getEntries({
-    order: '-sys.createdAt',
+    order: '-sys.updatedAt',
     ...filter,
   });
 

@@ -12,11 +12,6 @@ const BarraGloboCom = () => {
             cor="blue"
           />
           <LinkBarraGloboCom
-            texto="g1"
-            link="https://g1.globo.com/"
-            cor="#a80000"
-          />
-          <LinkBarraGloboCom
             texto="ge"
             link="https://globoesporte.globo.com/"
             cor="green"

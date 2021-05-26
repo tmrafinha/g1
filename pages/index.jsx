@@ -20,9 +20,24 @@ const Home = ({ noticias }) => {
         <div className="flex flex-col lg:flex-row lg:justify-center lg:space-x-4 lg:px-4">
           <div className="w-full lg:w-9/12">
             {noticias &&
-              noticias.map((noticia) => (
-                <ChamadaNoticia key={noticia.fields.titulo} noticia={noticia} />
-              ))}
+              noticias.map((noticia) => {
+                const { titulo, subtitulo, chamada, data, categoria, slug } =
+                  noticia.fields;
+                const imagem = noticia.fields?.imagem?.fields?.file?.url;
+
+                return (
+                  <ChamadaNoticia
+                    key={`${titulo}__${slug}`}
+                    titulo={titulo}
+                    subtitulo={subtitulo}
+                    chamada={chamada}
+                    data={data}
+                    categoria={categoria}
+                    imagem={imagem}
+                    slug={slug}
+                  />
+                );
+              })}
           </div>
 
           <div className="lg:w-96">

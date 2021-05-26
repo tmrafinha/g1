@@ -1,9 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 
-const ChamadaNoticia = ({ noticia }) => {
-  const { titulo, subtitulo, chamada, data, categoria, imagem, slug } =
-    noticia.fields;
+const ChamadaNoticia = ({
+  titulo,
+  subtitulo,
+  chamada,
+  data,
+  categoria,
+  imagem,
+  slug,
+}) => {
+  // const { titulo, subtitulo, chamada, data, categoria, imagem, slug } =
+  //   noticia.fields;
   // const imagem = noticia.fields.imagem.file.url;
 
   return (
@@ -33,7 +41,7 @@ const ChamadaNoticia = ({ noticia }) => {
 
             {imagem && (
               <img
-                src={imagem.fields.file.url}
+                src={imagem}
                 alt={titulo}
                 className="sm:w-1/3 object-cover"
               />

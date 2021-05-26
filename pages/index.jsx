@@ -22,10 +22,15 @@ const Home = ({ noticias }) => {
           <div className="w-full lg:w-9/12">
             {noticias &&
               noticias.map((noticia) => {
-                const { titulo, subtitulo, chamada, data, categoria, slug } =
+                const { titulo, subtitulo, chamada, categoria, slug } =
                   noticia.fields;
                 const imagem = noticia.fields?.imagem?.fields?.file?.url;
-                const dataFormatada = formataData.amigavel(data);
+
+                const dataCriacao = noticia.sys.createdAt;
+                const dataAtualizacao = noticia.sys.updatedAt;
+                const dataCriacaoFormatada = formataData.amigavel(dataCriacao);
+                const dataAtualizacaoFormatada =
+                  formataData.amigavel(dataAtualizacao);
 
                 return (
                   <ChamadaNoticia
@@ -33,10 +38,11 @@ const Home = ({ noticias }) => {
                     titulo={titulo}
                     subtitulo={subtitulo}
                     chamada={chamada}
-                    data={dataFormatada}
                     categoria={categoria}
                     imagem={imagem}
                     slug={slug}
+                    dataCriacao={dataCriacaoFormatada}
+                    dataAtualizacao={dataAtualizacaoFormatada}
                   />
                 );
               })}

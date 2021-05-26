@@ -16,10 +16,14 @@ const PaginaNoticia = ({ noticia }) => {
     return <div>Carregando...</div>;
   }
 
-  const { titulo, subtitulo, data, categoria } = noticia[0].fields;
-  const dataFormatada = formataData.padrao(data);
-  const imagem = noticia[0].fields.imagem?.fields.file.url;
+  const { titulo, subtitulo, categoria } = noticia[0].fields;
+  const imagem = noticia[0].fields?.imagem?.fields?.file?.url;
   const corpo = documentToHtmlString(noticia[0].fields.corpo);
+
+  const dataCriacao = noticia[0].sys.createdAt;
+  const dataAtualizacao = noticia[0].sys.updatedAt;
+  const dataCriacaoFormatada = formataData.padrao(dataCriacao);
+  const dataAtualizacaoFormatada = formataData.amigavel(dataAtualizacao);
 
   const { menus } = dados;
   return (
@@ -38,7 +42,23 @@ const PaginaNoticia = ({ noticia }) => {
                 <div className="p-4 space-y-4">
                   <p className="font-bold text-4xl mb-4">{titulo}</p>
                   <p className="text-lg">{subtitulo}</p>
-                  <p className="text-xs">{dataFormatada}</p>
+
+                  <div className="flex flex-col">
+                    <div className="flex space-x-2">
+                      {dataCriacao !== dataAtualizacao && (
+                        <>
+                          <span className="text-xs">
+                            Atualizado {dataAtualizacaoFormatada}
+                          </span>
+                          <span className="text-xs"> - </span>
+                        </>
+                      )}
+                      <span className="text-xs">
+                        Criado em {dataCriacaoFormatada}
+                      </span>
+                    </div>
+                    <p className="text-xs">Categoria {categoria}</p>
+                  </div>
                 </div>
                 <img src={imagem} alt={titulo} />
                 <div

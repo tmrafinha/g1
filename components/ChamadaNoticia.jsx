@@ -5,10 +5,11 @@ const ChamadaNoticia = ({
   titulo,
   subtitulo,
   chamada,
-  data,
   categoria,
   imagem,
   slug,
+  dataCriacao,
+  dataAtualizacao,
 }) => {
   return (
     <Link href={slug ? `/noticias/${slug}` : '#'} passHref>
@@ -44,9 +45,15 @@ const ChamadaNoticia = ({
             )}
 
             <div className="flex space-x-2 text-gray-600 px-6 text-xs sm:hidden">
-              <span>{data}</span>
+              {dataCriacao !== dataAtualizacao && (
+                <>
+                  <span>Atualizado {dataCriacao}</span>
+                  <span>-</span>
+                </>
+              )}
+              <span>Criado {dataCriacao}</span>
               <span>-</span>
-              <span>Em {categoria}</span>
+              <span>Categoria {categoria}</span>
             </div>
           </div>
         </div>

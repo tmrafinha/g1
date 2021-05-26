@@ -4,7 +4,8 @@ import ChamadaNoticia from '../components/ChamadaNoticia';
 import Rodape from '../components/Rodape';
 import BarraGloboCom from './../components/BarraGloboCom';
 import dados from '../dados.json';
-import { fetchEntries } from './../util/contentfulPosts';
+import { fetchEntries } from '../libs/contentful';
+import formataData from './../utils/formataData';
 
 const Home = ({ noticias }) => {
   const { menus } = dados;
@@ -24,6 +25,7 @@ const Home = ({ noticias }) => {
                 const { titulo, subtitulo, chamada, data, categoria, slug } =
                   noticia.fields;
                 const imagem = noticia.fields?.imagem?.fields?.file?.url;
+                const dataFormatada = formataData.amigavel(data);
 
                 return (
                   <ChamadaNoticia
@@ -31,7 +33,7 @@ const Home = ({ noticias }) => {
                     titulo={titulo}
                     subtitulo={subtitulo}
                     chamada={chamada}
-                    data={data}
+                    data={dataFormatada}
                     categoria={categoria}
                     imagem={imagem}
                     slug={slug}

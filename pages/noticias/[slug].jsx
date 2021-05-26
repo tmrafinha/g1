@@ -5,8 +5,9 @@ import CardLateral from './../../components/CardLateral';
 import Rodape from './../../components/Rodape';
 import dados from '../../dados.json';
 import { NextSeo } from 'next-seo';
-import { fetchEntries } from './../../util/contentfulPosts';
+import { fetchEntries } from '../../libs/contentful';
 import { useRouter } from 'next/router';
+import formataData from './../../utils/formataData';
 
 const PaginaNoticia = ({ noticia }) => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const PaginaNoticia = ({ noticia }) => {
   }
 
   const { titulo, subtitulo, data, categoria } = noticia[0].fields;
+  const dataFormatada = formataData.padrao(data);
   const imagem = noticia[0].fields.imagem?.fields.file.url;
   const corpo = documentToHtmlString(noticia[0].fields.corpo);
 
@@ -33,10 +35,10 @@ const PaginaNoticia = ({ noticia }) => {
           <div className="w-full lg:w-9/12">
             {noticia && (
               <>
-                <div className="p-4">
+                <div className="p-4 space-y-4">
                   <p className="font-bold text-4xl mb-4">{titulo}</p>
                   <p className="text-lg">{subtitulo}</p>
-                  <p className="text-xs">{data}</p>
+                  <p className="text-xs">{dataFormatada}</p>
                 </div>
                 <img src={imagem} alt={titulo} />
                 <div

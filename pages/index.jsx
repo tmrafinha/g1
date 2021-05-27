@@ -25,6 +25,10 @@ const Home = ({ noticias }) => {
                 const { titulo, subtitulo, chamada, categoria, slug } =
                   noticia.fields;
                 const imagem = noticia.fields?.imagem?.fields?.file?.url;
+                const imagemLargura =
+                  noticia.fields?.imagem?.fields?.file?.details?.image?.width;
+                const imagemAltura =
+                  noticia.fields?.imagem?.fields?.file?.details?.image?.height;
 
                 const dataCriacao = noticia.sys.createdAt;
                 const dataAtualizacao = noticia.sys.updatedAt;
@@ -40,6 +44,8 @@ const Home = ({ noticias }) => {
                     chamada={chamada}
                     categoria={categoria}
                     imagem={imagem}
+                    imagemLargura={imagemLargura}
+                    imagemAltura={imagemAltura}
                     slug={slug}
                     dataCriacao={dataCriacaoFormatada}
                     dataAtualizacao={dataAtualizacaoFormatada}

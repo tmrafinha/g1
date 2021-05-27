@@ -8,6 +8,7 @@ import { NextSeo } from 'next-seo';
 import { fetchEntries } from '../../libs/contentful';
 import { useRouter } from 'next/router';
 import formataData from './../../utils/formataData';
+import Image from 'next/image';
 
 const PaginaNoticia = ({ noticia }) => {
   const router = useRouter();
@@ -18,6 +19,10 @@ const PaginaNoticia = ({ noticia }) => {
 
   const { titulo, subtitulo, categoria } = noticia[0].fields;
   const imagem = noticia[0].fields?.imagem?.fields?.file?.url;
+  const imagemLargura =
+    noticia[0].fields?.imagem?.fields?.file?.details?.image?.width;
+  const imagemAltura =
+    noticia[0].fields?.imagem?.fields?.file?.details?.image?.height;
   const corpo = documentToHtmlString(noticia[0].fields.corpo);
 
   const dataCriacao = noticia[0].sys.createdAt;
@@ -60,7 +65,15 @@ const PaginaNoticia = ({ noticia }) => {
                     <p className="text-xs">Categoria {categoria}</p>
                   </div>
                 </div>
-                <img src={imagem} alt={titulo} />
+                {imagem && (
+                  <Image
+                    src={`https:${imagem}`}
+                    alt={titulo}
+                    width={imagemLargura}
+                    height={imagemAltura}
+                    layout="responsive"
+                  />
+                )}
                 <div
                   className="p-4 pb-0"
                   dangerouslySetInnerHTML={{ __html: corpo }}

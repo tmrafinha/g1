@@ -1,5 +1,5 @@
-import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ChamadaNoticia = ({
   titulo,
@@ -7,6 +7,8 @@ const ChamadaNoticia = ({
   chamada,
   categoria,
   imagem,
+  imagemLargura,
+  imagemAltura,
   slug,
   dataCriacao,
   dataAtualizacao,
@@ -35,8 +37,11 @@ const ChamadaNoticia = ({
             <div className="flex flex-col sm:flex-row sm:justify-start space-y-2 sm:space-y-0">
               {imagem && (
                 <img
-                  src={imagem}
+                  src={`https:${imagem}`}
                   alt={titulo}
+                  width={imagemLargura}
+                  height={imagemAltura}
+                  layout="responsive"
                   className={`sm:w-1/3 object-cover hidden ${
                     topo ? '' : 'sm:flex'
                   }`}
@@ -74,8 +79,11 @@ const ChamadaNoticia = ({
 
                 {imagem && (
                   <img
-                    src={imagem}
+                    src={`https:${imagem}`}
                     alt={titulo}
+                    width={imagemLargura}
+                    height={imagemAltura}
+                    layout="responsive"
                     className={`sm:w-1/3 object-cover ${
                       topo ? 'hidden' : 'sm:hidden'
                     }`}

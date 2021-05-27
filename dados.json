@@ -1,41 +1,20 @@
 {
-  "noticias": [
-    {
-      "titulo": "Índia se torna o 3º país a superar 300 mil mortes por Covid",
-      "subtitulo": "Pandemia sem controle",
-      "corpo": "Apenas EUA e Brasil haviam superado a marca. Nova variante descoberta no país asiático já é detectada em todos os continentes.",
-      "data": "23/05/2021",
-      "categoria": "Covid",
-      "imagem": false
-    },
-    {
-      "titulo": "Pazuello entende que cometeu erro ao ir a ato político, diz Mourão",
-      "subtitulo": "Política e quartel",
-      "corpo": "Vice-presidente afirma que ex-ministro pode pedir transferência para a reserva. Ontem, Pazuello esteve em manifestação com Bolsonaro.",
-      "data": "23/05/2021",
-      "categoria": "Política",
-      "imagem": "https://s2.glbimg.com/HyOcnIWvlC58Pu0Mjg6ywTH5BW4=/0x449:554x761/540x304/smart/filters:max_age(3600)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/K/a/1V4snaQBSsKKYwNLNMzg/whatsapp-image-2021-05-23-at-11.35.33.jpeg"
-    },
-    {
-      "titulo": "IR: é melhor entregar a declaração incompleta ou perder o prazo?",
-      "subtitulo": "Reta final",
-      "corpo": "Receita libera hoje consultas ao 1º lote de restituição. Auxílio emergencial: veja quem recebe hoje a 2ª parcela",
-      "data": "22/05/2021",
-      "categoria": "Imposto de Renda 2021",
-      "imagem": false
-    },
-    {
-      "titulo": "Morte de MC Kevin foi acidental, diz laudo; perícia detalha queda",
-      "subtitulo": "Investigação no Rio",
-      "corpo": "'Quero que respeitem a memória dele', diz viúva",
-      "data": "22/05/2021",
-      "categoria": "Fantástico",
-      "imagem": false
-    }
-  ],
   "menus": [
     {
-      "nome": "Mais Lidas",
+      "nome": "Pra alegrar esse dia ☕",
+      "itens": [
+        {
+          "texto": "Mais um clone no ar",
+          "link": "#"
+        },
+        {
+          "texto": "Deploy na Vercel",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "nome": "Mais lidas",
       "itens": [
         {
           "texto": "Novo feriado prolongado",

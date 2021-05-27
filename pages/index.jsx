@@ -19,9 +19,9 @@ const Home = ({ noticias }) => {
 
       <main className="flex-grow justify-center">
         <div className="flex flex-col lg:flex-row lg:justify-center lg:space-x-4 lg:px-4">
-          <div className="w-full lg:w-9/12">
+          <div className="flex flex-wrap w-full mt-4 lg:w-9/12">
             {noticias &&
-              noticias.map((noticia) => {
+              noticias.map((noticia, posicao) => {
                 const { titulo, subtitulo, chamada, categoria, slug } =
                   noticia.fields;
                 const imagem = noticia.fields?.imagem?.fields?.file?.url;
@@ -43,6 +43,7 @@ const Home = ({ noticias }) => {
                     slug={slug}
                     dataCriacao={dataCriacaoFormatada}
                     dataAtualizacao={dataAtualizacaoFormatada}
+                    posicao={posicao + 1}
                   />
                 );
               })}

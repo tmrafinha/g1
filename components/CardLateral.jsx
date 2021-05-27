@@ -3,7 +3,7 @@ import ItemCardLateral from './ItemCardLateral';
 
 const CardLateral = ({ cabecalho = 'cabecalho', itens = [], rodape }) => {
   return (
-    <div className="bg-white border mt-4">
+    <div className="bg-white border rounded shadow-sm mt-4">
       <div className="flex flex-col divide-y">
         <div className="">
           <p className="p-4 font-bold">{cabecalho}</p>

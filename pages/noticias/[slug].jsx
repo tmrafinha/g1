@@ -1,4 +1,3 @@
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import BarraGloboCom from './../../components/BarraGloboCom';
 import BarraTitulo from './../../components/BarraTitulo';
 import CardLateral from './../../components/CardLateral';
@@ -7,8 +6,8 @@ import dados from '../../dados.json';
 import { NextSeo } from 'next-seo';
 import { fetchEntries } from '../../libs/contentful';
 import { useRouter } from 'next/router';
-import formataData from './../../utils/formataData';
 import Image from 'next/image';
+import separaDadosNoticia from '../../utils/separaDadosNoticia';
 
 const PaginaNoticia = ({ noticia }) => {
   const router = useRouter();
@@ -17,18 +16,19 @@ const PaginaNoticia = ({ noticia }) => {
     return <div>Carregando...</div>;
   }
 
-  const { titulo, subtitulo, categoria } = noticia[0].fields;
-  const imagem = noticia[0].fields?.imagem?.fields?.file?.url;
-  const imagemLargura =
-    noticia[0].fields?.imagem?.fields?.file?.details?.image?.width;
-  const imagemAltura =
-    noticia[0].fields?.imagem?.fields?.file?.details?.image?.height;
-  const corpo = documentToHtmlString(noticia[0].fields.corpo);
-
-  const dataCriacao = noticia[0].sys.createdAt;
-  const dataAtualizacao = noticia[0].sys.updatedAt;
-  const dataCriacaoFormatada = formataData.padrao(dataCriacao);
-  const dataAtualizacaoFormatada = formataData.amigavel(dataAtualizacao);
+  const {
+    titulo,
+    subtitulo,
+    categoria,
+    imagem,
+    imagemLargura,
+    imagemAltura,
+    corpo,
+    dataCriacao,
+    dataCriacaoPadrao,
+    dataAtualizacao,
+    dataAtualizacaoAmigavel,
+  } = separaDadosNoticia(noticia);
 
   const { menus } = dados;
   return (
@@ -53,13 +53,13 @@ const PaginaNoticia = ({ noticia }) => {
                       {dataCriacao !== dataAtualizacao && (
                         <>
                           <span className="text-xs">
-                            Atualizado {dataAtualizacaoFormatada}
+                            Atualizado {dataAtualizacaoAmigavel}
                           </span>
                           <span className="text-xs"> - </span>
                         </>
                       )}
                       <span className="text-xs">
-                        Criado em {dataCriacaoFormatada}
+                        Criado em {dataCriacaoPadrao}
                       </span>
                     </div>
                     <p className="text-xs">Categoria {categoria}</p>
@@ -104,19 +104,22 @@ const PaginaNoticia = ({ noticia }) => {
 
 export default PaginaNoticia;
 
-export const getStaticPaths = async () => ({
-  paths: [],
-  fallback: true,
-});
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
 
 export const getStaticProps = async ({ params }) => {
   const slug = params.slug;
 
-  const noticia = await fetchEntries({
+  const noticias = await fetchEntries({
     content_type: 'noticia',
     limit: 1,
     'fields.slug': slug,
   });
+  const noticia = noticias[0];
 
   return {
     props: {

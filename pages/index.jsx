@@ -5,7 +5,7 @@ import Rodape from '../components/Rodape';
 import BarraGloboCom from './../components/BarraGloboCom';
 import dados from '../dados.json';
 import { fetchEntries } from '../libs/contentful';
-import formataData from './../utils/formataData';
+import separaDadosNoticia from './../utils/separaDadosNoticia';
 
 const Home = ({ noticias }) => {
   const { menus } = dados;
@@ -22,19 +22,18 @@ const Home = ({ noticias }) => {
           <div className="flex flex-wrap w-full mt-4 lg:w-9/12">
             {noticias &&
               noticias.map((noticia, posicao) => {
-                const { titulo, subtitulo, chamada, categoria, slug } =
-                  noticia.fields;
-                const imagem = noticia.fields?.imagem?.fields?.file?.url;
-                const imagemLargura =
-                  noticia.fields?.imagem?.fields?.file?.details?.image?.width;
-                const imagemAltura =
-                  noticia.fields?.imagem?.fields?.file?.details?.image?.height;
-
-                const dataCriacao = noticia.sys.createdAt;
-                const dataAtualizacao = noticia.sys.updatedAt;
-                const dataCriacaoFormatada = formataData.amigavel(dataCriacao);
-                const dataAtualizacaoFormatada =
-                  formataData.amigavel(dataAtualizacao);
+                const {
+                  titulo,
+                  subtitulo,
+                  chamada,
+                  categoria,
+                  slug,
+                  imagem,
+                  imagemLargura,
+                  imagemAltura,
+                  dataCriacaoAmigavel,
+                  dataAtualizacaoAmigavel,
+                } = separaDadosNoticia(noticia);
 
                 return (
                   <ChamadaNoticia
@@ -47,8 +46,8 @@ const Home = ({ noticias }) => {
                     imagemLargura={imagemLargura}
                     imagemAltura={imagemAltura}
                     slug={slug}
-                    dataCriacao={dataCriacaoFormatada}
-                    dataAtualizacao={dataAtualizacaoFormatada}
+                    dataCriacao={dataCriacaoAmigavel}
+                    dataAtualizacao={dataAtualizacaoAmigavel}
                     posicao={posicao + 1}
                   />
                 );

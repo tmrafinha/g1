@@ -36,19 +36,22 @@ const ChamadaNoticia = ({
           >
             <div className="flex flex-col sm:flex-row sm:justify-start space-y-2 sm:space-y-0">
               {imagem && (
-                <img
-                  src={`https:${imagem}`}
-                  alt={titulo}
-                  width={imagemLargura}
-                  height={imagemAltura}
-                  layout="responsive"
-                  className={`sm:w-1/3 object-cover hidden ${
+                <div
+                  className={`w-1/3 object-cover hidden ${
                     topo ? '' : 'sm:flex'
                   }`}
-                />
+                >
+                  <Image
+                    src={imagem}
+                    alt={titulo}
+                    width={imagemLargura}
+                    height={imagemAltura}
+                    // layout="responsive"
+                  />
+                </div>
               )}
 
-              <div className="overflow-ellipsis overflow-hidden space-y-4">
+              <div className="flex-grow sm:w-2/3 overflow-ellipsis overflow-hidden space-y-4">
                 <span
                   className={`font-bold px-4 ${!imagem ? ' sm:px-0' : ''} ${
                     topo ? 'text-white' : ''
@@ -78,16 +81,19 @@ const ChamadaNoticia = ({
                 </p>
 
                 {imagem && (
-                  <img
-                    src={`https:${imagem}`}
-                    alt={titulo}
-                    width={imagemLargura}
-                    height={imagemAltura}
-                    layout="responsive"
+                  <div
                     className={`sm:w-1/3 object-cover ${
                       topo ? 'hidden' : 'sm:hidden'
                     }`}
-                  />
+                  >
+                    <Image
+                      src={imagem}
+                      alt={titulo}
+                      width={imagemLargura}
+                      height={imagemAltura}
+                      // layout="responsive"
+                    />
+                  </div>
                 )}
 
                 <div

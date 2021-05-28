@@ -1,13 +1,17 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import formataData from './formataData';
+import verificaImagem from './verificaImagem';
 
 const separaDadosNoticia = (noticia) => {
   const { titulo, subtitulo, chamada, categoria, slug } = noticia.fields;
-  const imagem = noticia.fields?.imagem?.fields?.file?.url;
-  const imagemLargura =
-    noticia.fields?.imagem?.fields?.file?.details?.image?.width;
-  const imagemAltura =
-    noticia.fields?.imagem?.fields?.file?.details?.image?.height;
+  const { imagem, imagemLargura, imagemAltura } = verificaImagem(
+    noticia.fields?.imagem
+  );
+  // const imagem =  noticia.fields?.imagem?.fields?.file?.url;
+  // const imagemLargura =
+  //   noticia.fields?.imagem?.fields?.file?.details?.image?.width;
+  // const imagemAltura =
+  //   noticia.fields?.imagem?.fields?.file?.details?.image?.height;
   const corpo = documentToHtmlString(noticia.fields.corpo);
 
   const dataCriacao = noticia.sys.createdAt;

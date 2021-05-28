@@ -67,7 +67,7 @@ const PaginaNoticia = ({ noticia }) => {
                 </div>
                 {imagem && (
                   <Image
-                    src={`https:${imagem}`}
+                    src={imagem}
                     alt={titulo}
                     width={imagemLargura}
                     height={imagemAltura}
@@ -124,6 +124,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       noticia,
+      revalidate: 60 * 60 * 2,
     },
   };
 };

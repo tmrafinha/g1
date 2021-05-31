@@ -50,17 +50,17 @@ const PaginaNoticia = ({ noticia }) => {
 
                   <div className="flex flex-col">
                     <div className="flex space-x-2">
-                      {dataCriacao !== dataAtualizacao && (
-                        <>
-                          <span className="text-xs">
-                            Atualizado {dataAtualizacaoAmigavel}
-                          </span>
-                          <span className="text-xs"> - </span>
-                        </>
-                      )}
                       <span className="text-xs">
                         Criado em {dataCriacaoPadrao}
                       </span>
+                      {dataCriacao !== dataAtualizacao && (
+                        <>
+                          <span className="text-xs"> - </span>
+                          <span className="text-xs">
+                            Atualizado {dataAtualizacaoAmigavel}
+                          </span>
+                        </>
+                      )}
                     </div>
                     <p className="text-xs">Categoria {categoria}</p>
                   </div>

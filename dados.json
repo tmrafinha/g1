@@ -4,12 +4,12 @@
       "nome": "Pra alegrar esse dia ☕",
       "itens": [
         {
-          "texto": "Mais um clone no ar",
-          "link": "#"
+          "texto": "Toyota aprova plano de demissão temporária",
+          "link": "https://rendimento.vercel.app/"
         },
         {
-          "texto": "Deploy na Vercel",
-          "link": "#"
+          "texto": "Lula anuncia investimento de US$ 1 bi em fundo global para florestas",
+          "link": "https://rendimento.vercel.app/"
         }
       ]
     },
@@ -17,33 +17,33 @@
       "nome": "Mais lidas",
       "itens": [
         {
-          "texto": "Novo feriado prolongado",
-          "link": "#"
+          "texto": "Tiroteio em escola no Ceará deixa 2 adolescentes mortos",
+          "link": "https://rendimento.vercel.app/"
         },
         {
-          "texto": "Alta nos combustíveis",
-          "link": "#"
+          "texto": "EUA impõem sanções à esposa de ministro que delatou Bolsonaro",
+          "link": "https://rendimento.vercel.app/"
         },
         {
-          "texto": "Barraco com famosos",
-          "link": "#"
+          "texto": "Leis frouxas de armas estão alimentando crime organizado no Brasil",
+          "link": "https://rendimento.vercel.app/"
         }
       ]
     },
     {
-      "nome": "Covid-19",
+      "nome": "Brasil & Política",
       "itens": [
         {
-          "texto": "Sobe número de infectados em todo o território nacional",
-          "link": "#"
+          "texto": "Bolsonaro é condenado a 27 anos de prisão por tentativa de golpe",
+          "link": "https://rendimento.vercel.app/"
         },
         {
-          "texto": "O que dizem os especialistas?",
-          "link": "#"
+          "texto": "Suprema Corte do Brasil mantém decisão que bloqueia Elon Musk’s X",
+          "link": "https://rendimento.vercel.app/"
         },
         {
-          "texto": "Como prevenir",
-          "link": "#"
+          "texto": "Lei da ‘devastação’ aprovada no Congresso enfraquece proteção ambiental",
+          "link": "https://rendimento.vercel.app/"
         }
       ]
     }

@@ -5,8 +5,6 @@ import Rodape from './../../components/Rodape';
 import dados from '../../dados.json';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import separaDadosNoticia from '../../utils/separaDadosNoticia';
 
 const PaginaNoticia = ({ noticia }) => {
   const router = useRouter();
@@ -15,21 +13,13 @@ const PaginaNoticia = ({ noticia }) => {
     return <div>Carregando...</div>;
   }
 
-  const {
-    titulo,
-    subtitulo,
-    categoria,
-    imagem,
-    imagemLargura,
-    imagemAltura,
-    corpo,
-    dataCriacao,
-    dataCriacaoPadrao,
-    dataAtualizacao,
-    dataAtualizacaoAmigavel,
-  } = separaDadosNoticia(noticia);
+  if (!noticia) {
+    return <div>Notícia não encontrada</div>;
+  }
 
+  const { titulo, subtitulo, categoria, corpo } = noticia;
   const { menus } = dados;
+
   return (
     <div className="flex flex-col min-h-screen">
       <NextSeo title={titulo} />
@@ -41,44 +31,14 @@ const PaginaNoticia = ({ noticia }) => {
       <main className="flex-grow justify-center">
         <div className="flex flex-col lg:flex-row lg:justify-center lg:space-x-4 lg:px-4">
           <div className="w-full lg:w-9/12">
-            {noticia && (
-              <>
-                <div className="p-4 space-y-4">
-                  <p className="font-bold text-4xl mb-4">{titulo}</p>
-                  <p className="text-lg">{subtitulo}</p>
-
-                  <div className="flex flex-col">
-                    <div className="flex space-x-2">
-                      <span className="text-xs">
-                        Criado em {dataCriacaoPadrao}
-                      </span>
-                      {dataCriacao !== dataAtualizacao && (
-                        <>
-                          <span className="text-xs"> - </span>
-                          <span className="text-xs">
-                            Atualizado {dataAtualizacaoAmigavel}
-                          </span>
-                        </>
-                      )}
-                    </div>
-                    <p className="text-xs">Categoria {categoria}</p>
-                  </div>
-                </div>
-                {imagem && (
-                  <Image
-                    src={imagem}
-                    alt={titulo}
-                    width={imagemLargura}
-                    height={imagemAltura}
-                    layout="responsive"
-                  />
-                )}
-                <div
-                  className="p-4 pb-0"
-                  dangerouslySetInnerHTML={{ __html: corpo }}
-                />
-              </>
-            )}
+            <div className="p-4 space-y-4">
+              <p className="font-bold text-4xl mb-4">{titulo}</p>
+              <p className="text-lg">{subtitulo}</p>
+              <div
+                className="p-4 pb-0"
+                dangerouslySetInnerHTML={{ __html: corpo }}
+              />
+            </div>
           </div>
 
           <div className="lg:w-96">
@@ -104,26 +64,40 @@ const PaginaNoticia = ({ noticia }) => {
 export default PaginaNoticia;
 
 export const getStaticPaths = async () => {
+  const { menus } = dados;
+
+  // Cria os slugs a partir do campo "texto" dos itens
+  const paths =
+    menus
+      .flatMap((menu) => menu.itens)
+      .map((item) => ({
+        params: {
+          slug: item.texto.toLowerCase().replace(/\s+/g, '-'),
+        },
+      })) || [];
+
   return {
-    paths: [],
+    paths,
     fallback: true,
   };
 };
 
 export const getStaticProps = async ({ params }) => {
-  const slug = params.slug;
+  const { menus } = dados;
 
-  const noticias = await fetchEntries({
-    content_type: 'noticia',
-    limit: 1,
-    'fields.slug': slug,
-  });
-  const noticia = noticias[0];
+  // Procura a notícia correspondente no JSON
+  const noticia =
+    menus
+      .flatMap((menu) => menu.itens)
+      .find(
+        (item) =>
+          item.texto.toLowerCase().replace(/\s+/g, '-') === params.slug
+      ) || null;
 
   return {
     props: {
       noticia,
-      revalidate: 60 * 60 * 2,
     },
+    revalidate: 60 * 60 * 2, // 2 horas
   };
 };

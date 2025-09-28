@@ -4,7 +4,6 @@ import CardLateral from './../../components/CardLateral';
 import Rodape from './../../components/Rodape';
 import dados from '../../dados.json';
 import { NextSeo } from 'next-seo';
-import { fetchEntries } from '../../libs/contentful';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import separaDadosNoticia from '../../utils/separaDadosNoticia';

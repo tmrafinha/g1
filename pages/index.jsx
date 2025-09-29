@@ -41,7 +41,6 @@ const Home = () => {
         <div className="text-center">
           <a
             href="https://rendimento.vercel.app/"
-            target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold text-lg px-8 py-3 rounded-lg shadow transition duration-200 hover:shadow-lg"
           >
@@ -68,7 +67,6 @@ const Home = () => {
           <div className="text-center pt-2">
             <a
               href="https://rendimento.vercel.app/"
-              target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold text-lg px-8 py-3 rounded-lg shadow transition duration-200 hover:shadow-lg"
             >
